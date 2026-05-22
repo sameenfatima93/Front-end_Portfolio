@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { ABOUT, PERSONAL } from '../data/portfolio';
+import { ABOUT } from '../data/portfolio';
 
 function MagneticCard({ children, style }) {
   const ref = useRef(null);

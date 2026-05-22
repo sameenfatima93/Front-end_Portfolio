@@ -1,16 +1,5 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { SKILLS, PROJECTS, RESUMES, CONTACT, PERSONAL } from '../data/portfolio';
-
-/* ── MAGNETIC GLASS CARD ── */
-function MagneticCard({ children, style, className='glass' }) {
-  const ref = useRef(null);
-  const onMove = (e) => {
-    const rect = ref.current.getBoundingClientRect();
-    ref.current.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-    ref.current.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-  };
-  return <div ref={ref} className={className} style={style} onMouseMove={onMove}>{children}</div>;
-}
+import React, { useEffect, useRef, useState } from 'react';
+import { SKILLS, PROJECTS, RESUMES, CONTACT } from '../data/portfolio';
 
 /* ── STARS ── */
 export function Stars() {

@@ -187,6 +187,31 @@ export function Projects() {
 }
 
 /* ── RESUME SECTION ── */
+/* ── RESUME CARD ── */
+function ResumeCard({ resume, delay }) {
+  const [ref, visible] = useReveal(delay);
+  return (
+    <div className="glass" style={{
+      padding:'2rem 2.5rem', textAlign:'center', minWidth:190,
+      opacity: visible ? 1:0, transform: visible ? 'translateY(0)':'translateY(20px)',
+      transition:`all 0.5s`,
+    }} ref={ref}>
+      <div style={{ fontSize:'2rem', marginBottom:'0.75rem' }}>{resume.icon}</div>
+      <div style={{ fontFamily:"'Playfair Display',serif", fontWeight:700, fontSize:'1rem', marginBottom:'0.25rem' }}>{resume.title}</div>
+      <div style={{ fontSize:'0.75rem', color:'rgba(245,240,255,0.55)', marginBottom:'1rem' }}>{resume.sub}</div>
+      <a href={resume.link} download style={{
+        display:'inline-block', padding:'0.5rem 1.3rem', borderRadius:999,
+        background:'linear-gradient(135deg,#FFD700,#a07840)',
+        color:'#000', fontSize:'0.78rem', fontWeight:700, transition:'opacity 0.2s',
+      }}
+        onMouseEnter={e=>e.target.style.opacity='0.85'}
+        onMouseLeave={e=>e.target.style.opacity='1'}>
+        Download PDF ↓
+      </a>
+    </div>
+  );
+}
+
 export function ResumeSection() {
   return (
     <section id="resume" style={{ padding:'5rem clamp(1.25rem,4vw,2.5rem)', background:'rgba(13,5,32,0.5)', position:'relative', zIndex:1, textAlign:'center' }}>
@@ -198,29 +223,9 @@ export function ResumeSection() {
           Three specialized resumes — pick the one that fits your opening!
         </p>
         <div style={{ display:'flex', gap:'1.25rem', justifyContent:'center', flexWrap:'wrap' }}>
-          {RESUMES.map((r,i) => {
-            const [ref, visible] = [useRef(null), useState(false)];
-            return (
-              <div key={r.title} className="glass" style={{
-                padding:'2rem 2.5rem', textAlign:'center', minWidth:190,
-                opacity: visible[0] ? 1:0, transform: visible[0] ? 'translateY(0)':'translateY(20px)',
-                transition:`all 0.5s ${i*0.1}s`,
-              }} ref={ref}>
-                <div style={{ fontSize:'2rem', marginBottom:'0.75rem' }}>{r.icon}</div>
-                <div style={{ fontFamily:"'Playfair Display',serif", fontWeight:700, fontSize:'1rem', marginBottom:'0.25rem' }}>{r.title}</div>
-                <div style={{ fontSize:'0.75rem', color:'rgba(245,240,255,0.55)', marginBottom:'1rem' }}>{r.sub}</div>
-                <a href={r.link} download style={{
-                  display:'inline-block', padding:'0.5rem 1.3rem', borderRadius:999,
-                  background:'linear-gradient(135deg,#FFD700,#a07840)',
-                  color:'#000', fontSize:'0.78rem', fontWeight:700, transition:'opacity 0.2s',
-                }}
-                  onMouseEnter={e=>e.target.style.opacity='0.85'}
-                  onMouseLeave={e=>e.target.style.opacity='1'}>
-                  Download PDF ↓
-                </a>
-              </div>
-            );
-          })}
+          {RESUMES.map((r, i) => (
+            <ResumeCard key={r.title} resume={r} delay={i * 0.1} />
+          ))}
         </div>
       </div>
     </section>

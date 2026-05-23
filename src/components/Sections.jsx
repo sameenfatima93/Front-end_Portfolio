@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { SKILLS, PROJECTS, RESUMES, CONTACT } from '../data/portfolio';
+import { SKILLS, PROJECTS, RESUMES, CONTACT, PERSONAL } from '../data/portfolio';
 
 /* ── STARS ── */
 export function Stars() {

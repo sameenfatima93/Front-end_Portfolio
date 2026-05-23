@@ -100,7 +100,7 @@ export default function About() {
 
             {/* DOWNLOAD CV BUTTON */}
             <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <a href="/resumes/sameen-uiux-resume.pdf" download style={{
+              <a href="/resumes/Sameen_Fatima_(resume).pdf" download style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                 padding: '0.8rem 1.8rem', borderRadius: 999,
                 background: 'linear-gradient(135deg,#FFD700,#b8860b)',
